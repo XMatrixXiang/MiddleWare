@@ -21,6 +21,7 @@ namespace Nct
 			bool ret = getMsg();
 			if (ret == false) continue;
 			decodeMsg();
+
 		} while (mTerminate == false);		
 	}
 

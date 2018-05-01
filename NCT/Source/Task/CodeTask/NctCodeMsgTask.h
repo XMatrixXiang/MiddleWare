@@ -20,20 +20,18 @@
 namespace Nct
 {
 
-	class DecodeMsgTask : public PersistentTaskBase
+	class CodeMsgTask : public PersistentTaskBase
 	{
 	public:
-		DecodeMsgTask();
+		CodeMsgTask();
 
-		virtual ~ DecodeMsgTask();
+		virtual ~CodeMsgTask();
 	public:
-		virtual bool getMsg() = 0;
+		virtual void setMsg() = 0;
 
-		virtual void  decodeMsg() = 0;
+		virtual bool  codeMsg() = 0;
 
-	private:
-		void run();
-
+		void run() override;
 	protected:		
 		std::shared_ptr<MsgBuffer> mMsgBuf;		
 	};

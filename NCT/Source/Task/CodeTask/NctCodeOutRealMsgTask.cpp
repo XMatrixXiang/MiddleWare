@@ -1,28 +1,17 @@
-#include "NctDecodeMsgTask.h"
+#include "NctCodeOutRealMsgTask.h"
 #include "Message/NctMessageManager.h"
 
 
 namespace Nct
-{
-	DecodeMsgTask::DecodeMsgTask()
-	{
-		mMsgBuf = std::make_shared<MsgBuffer>();
-	}
-	DecodeMsgTask::~DecodeMsgTask()
-	{
-		mMsgBuf = nullptr;
-	}
-	void DecodeMsgTask::run()
-	{
-		do
-		{
-			NCT_THREAD_SLEEP(mThreadSleep);
-			if (mTerminate == true) break;			
-			bool ret = getMsg();
-			if (ret == false) continue;
-			decodeMsg();
-		} while (mTerminate == false);		
+{	
+
+    void CodeOutRealMsgTask::setMsg()
+	{		
+		MessageManager::instance().setOutRealMsg(reinterpret_cast<const char *>(mMsgBuf->getCurBufferPtr()),mMsgBuf->getDataSize());
 	}
 
+	bool CodeOutRealMsgTask::codeMsg()
+	{
 
+	}
 }
